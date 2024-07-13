@@ -7,6 +7,7 @@ import { transferERC20 } from "~~/lib/evm/actions";
 import { truncate } from "~~/lib/utils";
 import { notification } from "~~/utils/scaffold-eth";
 import { Balances } from "../Balances";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 
 const sepoliaUSDCAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
@@ -14,6 +15,7 @@ const sepoliaUSDCAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
 export const Safe = () => {
     const { safeAddress, safeAccount } = useSafe();
     const { balances, mintTokens } = useSafeAssets();
+    const { handleLogOut, isAuthenticated, } = useDynamicContext();
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -60,16 +62,18 @@ export const Safe = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center gap-1 bg-gray-900 p-1 rounded-lg text-slate-100">
-            {safeAddress && <div className="text-sm">Safe: <a target="_blank" href={getBlockScoutAccountUrl(safeAddress)}>{truncate(safeAddress)}</a></div>}
-            {!safeAccount || loading ?
-                <div>...</div>
-                :
-                <button className="bg-blue-700 px-2 py-1 rounded-lg text-xs" onClick={handleMintTokens}>Mint!</button>
-            }
-            {
-                balances && <Balances balances={balances} />
-            }
+        <div className="flex flex-col justify-center items-center gap-1 bg-gray-700 p-1 w-full text-slate-100">
+            <div className="flex gap-2">
+                {
+                    balances && <Balances balances={balances} />
+                }
+                <button className={`${!safeAccount || loading ? "bg-gray-400 animate-pulse" : "bg-blue-700"} px-2 py-1 rounded-lg text-xs`} onClick={!safeAccount || loading ? undefined : handleMintTokens}>Mint!</button>
+            </div>
+
+            <div className="flex items-center gap-2">
+                {safeAddress && <div className="text-xs"> <a target="_blank" href={getBlockScoutAccountUrl(safeAddress)}>Wallet: {safeAddress}</a></div>}
+                {isAuthenticated && <button className="bg-orange-700 px-1 py-1 rounded-lg text-xs" onClick={handleLogOut}>Logout</button>}
+            </div>
         </div>
     )
 }

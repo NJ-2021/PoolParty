@@ -5,7 +5,7 @@ import { getBlockScoutAccountUrl } from "~~/lib/blockscout";
 function PoolItem({ name, assets, platform, poolId }: Pool) {
     const router = useRouter();
 
-    return <div className="flex flex-col justify-center items-center bg-green-800 hover:bg-green-600 p-2 rounded-lg" onClick={
+    return <div className="flex flex-col flex-grow justify-center items-center bg-green-800 hover:bg-green-600 p-2 rounded-lg" onClick={
         () => {
             router.push(`/pool/${poolId}`)
         }
@@ -21,7 +21,7 @@ export function Pools() {
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="font-semibold text-sm">Available Pools</div>
-            <div className="flex flex-col items-start gap-2">
+            <div className="flex flex-col gap-2">
                 {pools.map(p => <PoolItem key={p.name} {...p}></PoolItem>)}
             </div>
         </div>

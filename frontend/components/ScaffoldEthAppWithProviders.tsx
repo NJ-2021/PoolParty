@@ -9,7 +9,6 @@ import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
 
 import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
-import { useInitializeNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { customEvmNetworks } from "~~/lib/networks";
 import scaffoldConfig from "~~/scaffold.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
