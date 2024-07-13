@@ -4,7 +4,7 @@ import { useSafe } from "~~/hooks/useSafe";
 import { getBlockScoutAccountUrl, getBlockScoutTxUrl, getTransactionOnSepoliaByHash, TransactionDetails } from "~~/lib/blockscout";
 import { transferERC20 } from "~~/lib/permissionless";
 import { truncate } from "~~/lib/utils";
-import { getBlockExplorerTxLink, notification } from "~~/utils/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 
 
 const sepoliaUSDCAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";

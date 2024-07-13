@@ -40,7 +40,7 @@ export function Pools() {
         <div className="flex flex-col justify-center items-center">
             <div className="font-semibold text-sm">Available Pools</div>
             <div className="flex flex-col items-start gap-2">
-                {pools.map(p => <PoolItem {...p}></PoolItem>)}
+                {pools.map(p => <PoolItem key={p.name} {...p}></PoolItem>)}
             </div>
         </div>
     )

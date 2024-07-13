@@ -19,7 +19,7 @@ const TxnNotification = ({ message, blockExplorerLink }: { message: string; bloc
     <div className={`flex flex-col ml-1 cursor-default`}>
       <p className="my-0">{message}</p>
       {blockExplorerLink && blockExplorerLink.length > 0 ? (
-        <a href={blockExplorerLink} target="_blank" rel="noreferrer" className="block link text-md">
+        <a href={blockExplorerLink} target="_blank" rel="noreferrer" className="block text-md link">
           check out transaction
         </a>
       ) : null}
@@ -52,6 +52,11 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
       const network = await walletClient.getChainId();
       // Get full transaction from public client
       const publicClient = getPublicClient(wagmiConfig);
+
+      if (!publicClient) {
+        notification.error("no publicClient");
+        return;
+      }
 
       notificationId = notification.loading(<TxnNotification message="Awaiting for user confirmation" />);
       if (typeof tx === "function") {
