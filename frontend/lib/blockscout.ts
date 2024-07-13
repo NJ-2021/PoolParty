@@ -81,3 +81,8 @@ export const getBlockScoutAccountUrl = (address?: string) => {
 export const getBlockScoutTxUrl = (txhash: string) => {
   return `https://eth-sepolia.blockscout.com/tx/${txhash}`
 }
+
+
+export const getUserOpUrl = (hash: string) => {
+  return `https://jiffyscan.xyz/userOpHash/${hash}?network=sepolia`
+}

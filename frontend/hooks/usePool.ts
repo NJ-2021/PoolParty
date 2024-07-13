@@ -4,7 +4,7 @@ import { useSafe } from "./useSafe";
 import useSWR from "swr";
 import { Address, erc20Abi, formatEther, parseEther } from "viem";
 import { POOL_MODIFY_LIQUIDITY_ABI } from "~~/lib/ABI";
-import { prepareApproveERC20Tx } from "~~/lib/permissionless";
+import { prepareApproveERC20Tx } from "~~/lib/evm/actions";
 import { SEPOLIA_POOL_ROUTER_CONTRACT } from "~~/lib/pool";
 
 export const pools = [
@@ -81,12 +81,13 @@ export function usePool(poolId?: string) {
                 prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
             ];
             console.log("approving allowances", txes);
-            return safeAccount?.sendTransactions({
+            const result = safeAccount?.sendTransactions({
                 transactions: txes
             }
             );
-            // return safeAccount?.sendTransaction(txes[0]);
+            console.log("approve result", result);
 
+            return result;
         }
     }
 
