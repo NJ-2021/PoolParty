@@ -11,7 +11,7 @@ import { notification } from "~~/utils/scaffold-eth/notification";
 
 export function useSafe() {
     const { address, chain, isConnected } = useAccount();
-    const { primaryWallet, isAuthenticated } = useDynamicContext();
+    const { primaryWallet, isAuthenticated, } = useDynamicContext();
     const [safeWallet, setSafeWallet] = useState<SafeSmartAccount<"0x0000000071727De22E5E9d8BAf0edAc6f37da032", HttpTransport, undefined> | null>(null);
     const [safeAccount, setSafeAccount] = useState<SafeSmartAccountClient | null>(null);
 
@@ -26,6 +26,7 @@ export function useSafe() {
             const walletClient = await createWalletClientFromWallet(primaryWallet);
             const sWallet = await getSafeAccount(chain, walletClient);
             setSafeWallet(sWallet);
+
         }
 
         initSafe();

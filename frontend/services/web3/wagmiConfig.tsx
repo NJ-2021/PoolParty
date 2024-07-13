@@ -1,47 +1,37 @@
 import { getOrMapViemChain } from "@dynamic-labs/viem-utils";
 import { Chain, createClient, http } from "viem";
 import {
-  arbitrum,
-  arbitrumSepolia,
-  base,
-  baseSepolia,
   hardhat,
-  mainnet,
-  polygon,
-  polygonAmoy,
-  scroll,
-  scrollSepolia,
   sepolia,
 } from "viem/chains";
 import { createConfig } from "wagmi";
 import { customEvmNetworks } from "~~/lib/networks";
 import scaffoldConfig from "~~/scaffold.config";
-import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
 
 export const wagmiConfig = createConfig({
   chains: [
-    arbitrum,
-    arbitrumSepolia,
-    base,
-    baseSepolia,
-    mainnet,
-    polygon,
-    polygonAmoy,
-    scroll,
-    scrollSepolia,
     sepolia,
-    hardhat,
+    // arbitrum,
+    // arbitrumSepolia,
+    // base,
+    // baseSepolia,
+    // mainnet,
+    // polygon,
+    // polygonAmoy,
+    // scroll,
+    // scrollSepolia,
+    // hardhat,
     ...customEvmNetworks.map(getOrMapViemChain),
   ],
   ssr: true,
   client({ chain }) {
     return createClient({
       chain,
-      transport: http(getAlchemyHttpUrl(chain.id)),
+      transport: http(process.env.NEXT_PUBLIC_JSON_RPC ?? "https://rpc.ankr.com/eth_sepolia"),
       ...(chain.id !== (hardhat as Chain).id
         ? {
-            pollingInterval: scaffoldConfig.pollingInterval,
-          }
+          pollingInterval: scaffoldConfig.pollingInterval,
+        }
         : {}),
     });
   },

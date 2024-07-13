@@ -9,7 +9,7 @@ import { usePool } from "~~/hooks/usePool";
 const PoolPage: NextPage = () => {
 
     const { poolId } = useParams();
-    const { pool } = usePool(poolId as string | undefined);
+    const { pool, balances } = usePool(poolId as string | undefined);
 
     const { name } = pool || {};
 
@@ -21,6 +21,9 @@ const PoolPage: NextPage = () => {
 
             <div className="flex justify-center">
                 {name}
+            </div>
+            <div className="flex justify-center">
+                {balances && JSON.stringify(balances)}
             </div>
 
             <div className="flex justify-center">

@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ERC20_ABI, ERC20_CROSSCHAIN_TRANSFER_ABI } from "./ABI";
-import { CROSSCHAIN_TRANSFER_CONTRACT_BASE_SEPOLIA } from "./constants";
+import { ERC20_ABI } from "./ABI";
 import { ENTRYPOINT_ADDRESS_V07, SmartAccountClient, createSmartAccountClient, walletClientToSmartAccountSigner } from "permissionless";
 import { SafeSmartAccount, signerToSafeSmartAccount } from "permissionless/accounts";
 import { createPimlicoBundlerClient, createPimlicoPaymasterClient } from "permissionless/clients/pimlico";
-import { Chain, HttpTransport, Transport, WalletClient, createPublicClient, http } from "viem";
+import { Chain, Transport, WalletClient, createPublicClient, http } from "viem";
 import { erc7579Actions, Erc7579Actions } from 'permissionless/actions/erc7579'
 import { EntryPoint } from "permissionless/types/entrypoint";
 

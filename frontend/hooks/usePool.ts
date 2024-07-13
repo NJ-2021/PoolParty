@@ -1,3 +1,10 @@
+import { readContracts } from "wagmi/actions";
+import { wagmiConfig } from "~~/services/web3/wagmiConfig";
+import { useSafe } from "./useSafe";
+import useSWR from "swr";
+import { Address, erc20Abi } from "viem";
+import { removeUser } from "@dynamic-labs/sdk-react-core/src/lib/store";
+
 export const pools = [
     {
         name: "mUNI/mUSDC 0.1%",
@@ -28,10 +35,47 @@ export type Pool = typeof pools[0];
 
 export function usePool(poolId?: string) {
 
+    const { safeAddress } = useSafe();
+
     const pool = pools.find(p => p.poolId === poolId);
+
+
+    const { data: balances, error } = useSWR(["asset-balances", safeAddress, pool?.assets], async () => {
+        const result = await readContracts(wagmiConfig, {
+            contracts: [
+                {
+                    abi: erc20Abi,
+                    functionName: 'balanceOf',
+                    address: pool?.assets[0].token as Address,
+                    args: [
+                        safeAddress!
+                    ]
+                },
+                {
+                    abi: erc20Abi,
+                    functionName: 'balanceOf',
+                    address: pool?.assets[1].token as Address,
+                    args: [
+                        safeAddress!
+                    ]
+                },
+            ]
+        });
+
+        console.log("asset balances", result);
+        const balance0 = result[0].status === "success" ? result[0].result?.toString() : 0;
+        const balance1 = result[1].status === "success" ? result[1].result?.toString() : 0;
+        return {
+            balance0,
+            balance1
+        }
+    });
+
+
+
 
     return {
         pool,
-
+        balances
     }
 }

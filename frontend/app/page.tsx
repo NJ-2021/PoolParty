@@ -8,7 +8,7 @@ import { Pools } from "~~/components/pools";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
-  const { loadingNetwork, sdkHasLoaded, isAuthenticated } = useDynamicContext();
+  const { loadingNetwork, sdkHasLoaded, isAuthenticated, } = useDynamicContext();
 
   return (
     <div className="flex justify-center items-center p-8 w-full h-full">
