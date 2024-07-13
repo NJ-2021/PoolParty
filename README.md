@@ -10,7 +10,7 @@
   <p>
     Liquidity provider's funds manager
 
-  
+  </div>
 
 <div align="center">
 
@@ -158,7 +158,7 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 | Zac L. | Developer | https://www.linkedin.com/in/zaclerzc/               | zlace0x              |
 | Taesuk Lee  |  Developer                  | https://www.linkedin.com/in/taesuk-lee-24237b100/   | xxxxxx       |
 | Alex Sanson |  Developer                   | https://www.linkedin.com/in/alexandre-sanson-50970419b/   | asanson1404      |
-| Lin Huang  |  Developer                   | https://www.linkedin.com/in/linnn-huang/   | xxxxxxx      |
+| Lin Huang  |  Developer                   | https://www.linkedin.com/in/linnn-huang/   | linnnnnnh      |
 | Nada Jabr      |  Product Manager          | https://www.linkedin.com/in/sanskar-tyagi-953a921b1/   | NJ-2021             |
 
 
