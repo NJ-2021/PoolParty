@@ -36,12 +36,7 @@
 - [About the Project](#star2-about-the-project)
   * [Screenshots](#camera-screenshots)
   * [Tech Stack](#space_invader-tech-stack)
-  * [Features](#dart-features)
-- [Getting Started](#toolbox-getting-started)
-  * [Prerequisites](#bangbang-prerequisites)
-  * [Installation](#gear-installation)
-  * [Run Locally](#running-run-locally)
-- [Contributing](#wave-contributing)
+  * [Contributing](#wave-contributing)
  
 
 
@@ -138,10 +133,10 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://ethglobal.com/events/istanbul/prizes/scroll">scroll</a></li>
-    <li><a href="https://ethglobal.com/events/istanbul/prizes/polygon">polygon</a></li>
-    <li><a href="https://ethglobal.com/events/istanbul/prizes/arbitrum">arbitrum</a></li>
-    <li><a href="https://ethglobal.com/events/istanbul/prizes/gnosis-chain">gnosis-chain</a></li>
+    <li><a href="https://ethglobal.com/events/brussles/prizes/uniswap">uniswap</a></li>
+    <li><a href="https://ethglobal.com/events/brussles/prizes/pancakeswap">pancakeswap</a></li>
+    <li><a href="https://ethglobal.com/events/brussles/prizes/safe">safe</a></li>
+    <li><a href="https://ethglobal.com/events/brussles/prizes/dynamic">dynamic</a></li>
   </ul>
 </details>
 
