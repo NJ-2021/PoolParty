@@ -2,11 +2,11 @@ import { getBlockScoutAccountUrl } from "~~/lib/blockscout";
 
 const pools = [
     {
-        name: "WETH/USDC 0.1%",
+        name: "mUNI/mUSDC 0.1%",
         poolKey: "",
         assets: [
-            { token: "", symbol: "WETH" },
-            { token: "", symbol: "USDC" }
+            { token: "0x2a238CbF7A05B45Fb101d9Fde6A1025719Da50fF", symbol: "mUNI" },
+            { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }
         ],
         platform: "UNISWAP",
         fallbackPlatform: "AAVE"
@@ -16,7 +16,7 @@ const pools = [
         poolKey: "",
         assets: [
             { token: "", symbol: "WBNB" },
-            { token: "", symbol: "USDC" }
+            { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }
         ],
         platform: "PANCAKE",
         fallbackPlatform: "AAVE"
@@ -30,7 +30,7 @@ function PoolItem({ name, poolKey, assets, platform }: PoolItem) {
     return <div className="flex flex-col justify-center items-center bg-green-800 hover:bg-green-600 p-2 rounded-lg">
         <h1>{platform} - {name}</h1>
         <div className="flex gap-1 text-xs">
-            {assets.map(a => <a target="_blank" href={getBlockScoutAccountUrl(a.token)}>{a.symbol}</a>)}
+            {assets.map(a => <a key={a.token} target="_blank" href={getBlockScoutAccountUrl(a.token)}>{a.symbol}</a>)}
         </div>
     </div>
 }
