@@ -23,8 +23,6 @@
      <h1>Make an efficient use of your funds in the liquidity pool!</h1>
   </p>
   
-
-
   
 
   </h4>
@@ -140,10 +138,10 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://ethglobal.com/events/brussles/prizes/uniswap">uniswap</a></li>
-    <li><a href="https://ethglobal.com/events/brussles/prizes/PancakeSwap">PancakeSwap</a></li>
-    <li><a href="https://ethglobal.com/events/brussles/prizes/safe">safe</a></li>
-    <li><a href="https://ethglobal.com/events/brussles/prizes/dynamic">dynamic</a></li>
+    <li><a href="https://ethglobal.com/events/istanbul/prizes/scroll">scroll</a></li>
+    <li><a href="https://ethglobal.com/events/istanbul/prizes/polygon">polygon</a></li>
+    <li><a href="https://ethglobal.com/events/istanbul/prizes/arbitrum">arbitrum</a></li>
+    <li><a href="https://ethglobal.com/events/istanbul/prizes/gnosis-chain">gnosis-chain</a></li>
   </ul>
 </details>
 
@@ -157,12 +155,11 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 
 | Member  | Role | Linkedin | GitHub   |
 | ----------- | ----------- |----------- |----------- |
-| Taesuk Lee | Developer | https://www.linkedin.com/in/taesuk-lee-24237b100/             | taesuklee              |
-| Lin Huang  |  Developer                   | https://www.linkedin.com/in/linnn-huang/   |       |
-| Zlace |  Developer                   | https://www.linkedin.com/in/zaclerzc/   |  zlace0x    |
-| Alex |  Developer                   | https://www.linkedin.com/in/alexandre-sanson-50970419b/  |  asanson1404    |
+| Zac L. | Developer | https://www.linkedin.com/in/zaclerzc/               | zlace0x              |
+| Taesuk Lee  |  Developer                  | https://www.linkedin.com/in/taesuk-lee-24237b100/   | xxxxxx       |
+| Alex Sanson |  Developer                   | https://www.linkedin.com/in/alexandre-sanson-50970419b/   | asanson1404      |
+| Lin Huang  |  Developer                   | https://www.linkedin.com/in/linnn-huang/   | xxxxxxx      |
 | Nada Jabr      |  Product Manager          | https://www.linkedin.com/in/sanskar-tyagi-953a921b1/   | NJ-2021             |
-https://www.linkedin.com/in/alexandre-sanson-50970419b/
 
 
  
