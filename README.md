@@ -1,2 +1,2 @@
 # PoolParty
-Dex's manager
+Liquidity provider's funds manager
