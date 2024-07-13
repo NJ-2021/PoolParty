@@ -43,7 +43,7 @@ export const getSafeAccount = async (chain: Chain, walletClient: WalletClient) =
     safeVersion: '1.4.1',
     saltNonce: 120n,
     safe4337ModuleAddress,
-    erc7579LaunchpadAddress: erc7579LaunchpadAddress
+    erc7579LaunchpadAddress
   });
 }
 
@@ -63,7 +63,9 @@ export const getPimlicoSmartAccountClient = async (
     account: safeSmartAccountClient,
     entryPoint: ENTRYPOINT_ADDRESS_V07,
     chain,
-    bundlerTransport: http(transportUrl(chain)),
+    bundlerTransport: http(transportUrl(chain), {
+      timeout: 30_000
+    }),
     middleware: {
       gasPrice: async () => (await pimlicoBundlerClient(chain).getUserOperationGasPrice()).fast, // use pimlico bundler to get gas prices
       sponsorUserOperation: ({ userOperation }) => {
@@ -78,41 +80,3 @@ export const getPimlicoSmartAccountClient = async (
   return smartAccountClient as SafeSmartAccountClient;
 };
 
-
-// export const getSmartAccountClient = async (signer) => {
-//   const account = await signerToSafeSmartAccount(publicClient, {
-//     entryPoint: ENTRYPOINT_ADDRESS_V07,
-//     signer,
-//     safeVersion: '1.4.1',
-//     saltNonce: 120n,
-//     safe4337ModuleAddress,
-//     erc7569LaunchpadAddress
-//   })
-
-//   const smartAccountClient = createSmartAccountClient({
-//     chain: sepolia,
-//     account,
-//     bundlerTransport: http(pimlicoUrl),
-//     middleware: {
-//       gasPrice: async () =>
-//         (await bundlerClient.getUserOperationGasPrice()).fast,
-//       sponsorUserOperation: ({ userOperation }) => {
-//         return paymasterClient.sponsorUserOperation({
-//           userOperation,
-//           sponsorshipPolicyId: "sp_early_synch"
-//         })
-//       }
-//     }
-//   }).extend(erc7579Actions({ entryPoint: ENTRYPOINT_ADDRESS_V07 }))
-
-//   return smartAccountClient as SafeSmartAccountClient
-// }
-
-export const approveERC20 = async (smartAccountClient: any, tokenAddress: string, amount: bigint, spender: string) => {
-  return await smartAccountClient.writeContract({
-    address: tokenAddress,
-    abi: ERC20_ABI,
-    functionName: "approve",
-    args: [spender, amount.toString()],
-  });
-};

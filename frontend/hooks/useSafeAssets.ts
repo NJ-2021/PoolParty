@@ -50,6 +50,7 @@ export function useSafeAssets() {
 
     const mintTokens = async () => {
         const txes = tokenList.map(tk => prepareMintERC20(tk.token));
+
         const result = await safeAccount?.sendTransactions({
             transactions: txes
         });

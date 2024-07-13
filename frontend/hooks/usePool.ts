@@ -4,7 +4,7 @@ import { useSafe } from "./useSafe";
 import useSWR from "swr";
 import { Address, erc20Abi, formatEther, parseEther } from "viem";
 import { POOL_MODIFY_LIQUIDITY_ABI } from "~~/lib/ABI";
-import { prepareApproveERC20Tx } from "~~/lib/evm/actions";
+import { prepareAddLiquidity, prepareApproveERC20Tx } from "~~/lib/evm/actions";
 import { SEPOLIA_POOL_ROUTER_CONTRACT } from "~~/lib/pool";
 
 export const pools = [
@@ -18,7 +18,7 @@ export const pools = [
         platform: "UNISWAP",
         fallbackPlatform: "AAVE",
         availableModules: [
-            { name: "Auto-compounder", module: "0x0288cA86E0a315A5c9DD0e6E45cA66d6b60dC617" }
+            { name: "Auto-compounder", module: "0xF1aE317941efeb1ffB103D959EF58170F1e577E0" }
         ]
     },
     {
@@ -79,9 +79,11 @@ export function usePool(poolId?: string) {
             const txes = [
                 prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
                 prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
+                prepareAddLiquidity()
             ];
             console.log("approving allowances", txes);
-            const result = safeAccount?.sendTransactions({
+
+            const result = await safeAccount?.sendTransactions({
                 transactions: txes
             }
             );
