@@ -1,4 +1,4 @@
-# PoolParty
+# Pool Party
 Liquidity provider's funds manager
 
 ## Features
@@ -11,11 +11,12 @@ Liquidity provider's funds manager
 
 <div align="center">
 
-  <img src="app/client/src/images/Crtlg.png" alt="logo" width="200" height="auto" />
+  <img src=" ![Pool Party](https://github.com/user-attachments/assets/535b0e2c-3ae2-4e44-bec4-2841cee7c61e)
+ " alt="logo" width="200" height="auto" />
   <h1>Pool Party</h1>
   
   <p>
-    A crowdfunding launchpad platform 
+    Liquidity provider's funds manager
   </p>
   
 <!-- Badges -->
