@@ -10,7 +10,7 @@
   <p>
     Liquidity provider's funds manager
 
-  
+  </div>
 
 <div align="center">
 
