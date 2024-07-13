@@ -1,4 +1,4 @@
-
+'use client';
 import { useState } from "react";
 import { useSafe } from "~~/hooks/useSafe";
 import { getBlockScoutAccountUrl, getBlockScoutTxUrl, getTransactionOnSepoliaByHash, TransactionDetails } from "~~/lib/blockscout";

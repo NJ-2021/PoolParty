@@ -19,7 +19,7 @@ const erc7569LaunchpadAddress = '0xEBe001b3D534B9B6E2500FB78E67a1A137f561CE'
 
 export const publicClient = (chain: Chain) =>
   createPublicClient({
-    transport: http("https://rpc.ankr.com/eth_sepolia"),
+    transport: http(process.env.NEXT_PUBLIC_JSON_RPC ?? "https://rpc.ankr.com/eth_sepolia"),
   });
 
 export const paymasterClient = (chain: Chain) =>

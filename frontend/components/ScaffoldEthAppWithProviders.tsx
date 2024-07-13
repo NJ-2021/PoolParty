@@ -15,7 +15,7 @@ import scaffoldConfig from "~~/scaffold.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
-  useInitializeNativeCurrencyPrice();
+  // useInitializeNativeCurrencyPrice();
 
   return (
     <>
@@ -66,13 +66,13 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
         overrides: {
           evmNetworks: networks => mergeNetworks(evmNetworks, networks),
         },
+        networkValidationMode: "sign-in"
       }}
     >
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <DynamicWagmiConnector>
             <ProgressBar />
-
             <ScaffoldEthApp>{children}</ScaffoldEthApp>
           </DynamicWagmiConnector>
         </QueryClientProvider>

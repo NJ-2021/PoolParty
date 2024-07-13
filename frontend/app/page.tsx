@@ -1,13 +1,14 @@
 "use client";
 
-import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+import { DynamicWidget, useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Safe } from "~~/components/safe";
-import { Pools } from "~~/components/pool";
+import { Pools } from "~~/components/pools";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
+  const { loadingNetwork, sdkHasLoaded, isAuthenticated } = useDynamicContext();
 
   return (
     <div className="flex justify-center items-center p-8 w-full h-full">
@@ -18,15 +19,14 @@ const Home: NextPage = () => {
         <div className="flex justify-center">
           <Pools />
         </div>
-        {isConnected &&
+        {isAuthenticated && isConnected &&
           <div className="flex justify-center">
             <Safe />
           </div>
         }
         <div className="flex justify-center">
-          <DynamicWidget />
+          {loadingNetwork || !sdkHasLoaded ? <div>Loading...</div> : <DynamicWidget />}
         </div>
-
       </div>
     </div>
   );

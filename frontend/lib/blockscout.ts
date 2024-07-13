@@ -75,7 +75,7 @@ export const getTransactionsOnEthSepolia = async (address: string) => {
 
 export const getBlockScoutAccountUrl = (address?: string) => {
   if (!address) return "";
-  return `https://eth-sepolia.blockscout.com/account/${address}`
+  return `https://eth-sepolia.blockscout.com/address/${address}`
 }
 
 export const getBlockScoutTxUrl = (txhash: string) => {
