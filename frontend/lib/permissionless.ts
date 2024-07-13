@@ -5,7 +5,7 @@ import { ERC20_ABI } from "./ABI";
 import { ENTRYPOINT_ADDRESS_V07, SmartAccountClient, createSmartAccountClient, walletClientToSmartAccountSigner } from "permissionless";
 import { SafeSmartAccount, signerToSafeSmartAccount } from "permissionless/accounts";
 import { createPimlicoBundlerClient, createPimlicoPaymasterClient } from "permissionless/clients/pimlico";
-import { Chain, Transport, WalletClient, createPublicClient, http } from "viem";
+import { Address, Chain, Hex, Transport, WalletClient, createPublicClient, encodeFunctionData, http } from "viem";
 import { erc7579Actions, Erc7579Actions } from 'permissionless/actions/erc7579'
 import { EntryPoint } from "permissionless/types/entrypoint";
 
@@ -115,6 +115,26 @@ export const approveERC20 = async (smartAccountClient: any, tokenAddress: string
     functionName: "approve",
     args: [spender, amount.toString()],
   });
+};
+
+interface BigInt {
+  /** Convert to BigInt to string form in JSON.stringify */
+  toJSON: () => string;
+}
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};
+
+export const prepareApproveERC20Tx = (tokenAddress: string, amount: bigint, spender: string): { to: Address; value: bigint; data: Hex } => {
+  return {
+    to: tokenAddress as Address,
+    data: encodeFunctionData({
+      abi: ERC20_ABI,
+      functionName: "approve",
+      args: [spender, amount.toString()],
+    }),
+    value: 0n,
+  }
 };
 
 export const transferERC20 = async (

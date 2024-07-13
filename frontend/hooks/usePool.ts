@@ -2,8 +2,10 @@ import { readContracts } from "wagmi/actions";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { useSafe } from "./useSafe";
 import useSWR from "swr";
-import { Address, erc20Abi } from "viem";
-import { removeUser } from "@dynamic-labs/sdk-react-core/src/lib/store";
+import { Address, erc20Abi, formatEther, parseEther } from "viem";
+import { POOL_MODIFY_LIQUIDITY_ABI } from "~~/lib/ABI";
+import { prepareApproveERC20Tx } from "~~/lib/permissionless";
+import { SEPOLIA_POOL_ROUTER_CONTRACT } from "~~/lib/pool";
 
 export const pools = [
     {
@@ -35,7 +37,7 @@ export type Pool = typeof pools[0];
 
 export function usePool(poolId?: string) {
 
-    const { safeAddress } = useSafe();
+    const { safeAddress, safeAccount } = useSafe();
 
     const pool = pools.find(p => p.poolId === poolId);
 
@@ -63,19 +65,35 @@ export function usePool(poolId?: string) {
         });
 
         console.log("asset balances", result);
-        const balance0 = result[0].status === "success" ? result[0].result?.toString() : 0;
-        const balance1 = result[1].status === "success" ? result[1].result?.toString() : 0;
+        const balance0 = result[0].status === "success" ? formatEther(result[0].result) : 0;
+        const balance1 = result[1].status === "success" ? formatEther(result[1].result) : 0;
         return {
             balance0,
             balance1
         }
     });
 
+    const provideLiquidty = async () => {
+
+        if (balances && balances.balance0 !== 0 && balances.balance1 !== 0) {
+            const txes = [
+                prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
+                prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
+            ];
+            console.log("approving allowances", txes);
+            return safeAccount?.sendTransactions({
+                transactions: txes
+            }
+            );
+        }
+    }
+
 
 
 
     return {
         pool,
-        balances
+        balances,
+        provideLiquidty
     }
 }
