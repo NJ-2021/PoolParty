@@ -12,7 +12,7 @@ Liquidity provider's funds manager
 <div align="center">
 
   <img src="app/client/src/images/Crtlg.png" alt="logo" width="200" height="auto" />
-  <h1>ESGROW PROJECT</h1>
+  <h1>Pool Party</h1>
   
   <p>
     A crowdfunding launchpad platform 
