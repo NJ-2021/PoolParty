@@ -22,7 +22,7 @@
 
 <div align="center">
 
-  <img width="255" alt=" <img width="611" alt="Screenshot 2024-07-13 at 19 34 50" src="https://github.com/user-attachments/assets/8bc9510f-25db-424a-a7dc-b08c74d8b7b8">
+ <img width="200" alt="Screenshot 2024-07-13 at 19 34 50" src="https://github.com/user-attachments/assets/8bc9510f-25db-424a-a7dc-b08c74d8b7b8">
 
     
 </div>
