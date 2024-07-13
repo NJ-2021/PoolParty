@@ -1,12 +1,4 @@
 
-## Features
-- Utilise v4 hooks to put out-of-position funds into ERC4626 compatible vaults
-- ERC7579-compatible Auto-compounding module
-- Safe with 4337, 7579 implementation
-- Embedded wallets with Dynamic
-
-
-
 <div align="center">
   
   <Pool Party>
@@ -61,57 +53,38 @@ Discover Pool Part, your gateway to manage the inactive tokens in the liquidity 
 
  ## 🌪️ The Challenge : Inactive tokens in liquidity pools & Tedious process of managing funds
 
-1. Tokens that are outside the predeterimend range are being inactive in the pool without any yield
-2. Users need to go through a multi-steps processes to manage their funds inside the pool
+**1. Tokens that are outside the predeterimend range are being inactive in the pool without any yield**
+**2. Users need to go through a multi-steps processes to manage their funds inside the pool**
 
 <!-- Solution -->
  ## ✨ Solution :
 
-**Streamlined Community Building:** Easily connect with like-minded individuals, cultivate new friendships, and effortlessly construct thriving communities.
+**1. Efficient use of funds in the pool:** 
 
-**Time-Saving Efficiency:** Say goodbye to endless scrolling! With Chirpy, content curation ensures you grasp the essence without spending hours, making smart posting on Telegram a new, efficient solution.
-
+**2. Managing funds in one click** 
 
 <!-- Modes -->
 ## 👥 Target Audience :
 
 
-**- Community Builders:** 
+**Liquidity providers** 
 
-**Chirpy**'s lens bot empowers community builders to effortlessly organize events, share relevant information, and foster community engagement, creating vibrant and connected spaces for crypto enthusiasts.
-
-**- Web3 users:** 
-
-**Chirpy** on Telegram makes posting easy for crypto fans. They can quickly share updates and engage without juggling multiple platforms. Smart posting with **Chirpy** helps them stay active online, keeping up with the fast-paced web3.
-
+Liquidity providers can manage the tokens in the pool through **Pool Party’s** main fetures. This will allow them to make an efficient use of funds and to manage their wallet in only one click
 
 <!-- Features -->
 ## :dart: Features : 
 
-- Voting system using telegram: useful for communities especially DAOs to makie collective decision
-- Chirpy users can mint NFTs like Nouns within Telegram
-- Chirpy users can post text and upload photos within Telegram
+- Utilise UniSwap and PancakeSwap v4 hooks to put out-of-position funds into ERC4626 compatible vaults
+- ERC7579-compatible Auto-compounding module
+- Safe with 4337, 7579 implementation
+- Embedded wallets with Dynamic
 
-
-<!-- Modes -->
-## ⏺️ Modes :
-
-- Private Chat: Personalized conversations.
-
-- Group Harmony: Elevate your group chats with Chirpy's features.
-
-
-<!-- Feasibility -->
-
- ## 🤓 Feasibility:
-
-**Chirpy** solves crypto FOMO and info overload by streamlining community management and event updates.
 
 <!-- Impact -->
 
 ## 📑 Impact:
 
-Improve time management and enhance community engagement.
+Efficinet use of inactive tokens in the pool and manage the funds in the wallet with only one click.
 
 
 <!-- **Innovation/Technical Complexity** -->
