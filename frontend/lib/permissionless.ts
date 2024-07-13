@@ -14,7 +14,7 @@ const transportUrl = (chain: Chain) =>
 
 
 const safe4337ModuleAddress = '0x3Fdb5BC686e861480ef99A6E3FaAe03c0b9F32e2'
-const erc7569LaunchpadAddress = '0xEBe001b3D534B9B6E2500FB78E67a1A137f561CE'
+const erc7579LaunchpadAddress = '0xEBe001b3D534B9B6E2500FB78E67a1A137f561CE'
 
 export const publicClient = (chain: Chain) =>
   createPublicClient({
@@ -43,7 +43,7 @@ export const getSafeAccount = async (chain: Chain, walletClient: WalletClient) =
     safeVersion: '1.4.1',
     saltNonce: 120n,
     safe4337ModuleAddress,
-    erc7569LaunchpadAddress
+    erc7579LaunchpadAddress: erc7579LaunchpadAddress
   });
 }
 

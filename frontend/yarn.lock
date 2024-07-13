@@ -6739,10 +6739,10 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==
 
-permissionless@0.1.34:
-  version "0.1.34"
-  resolved "https://registry.yarnpkg.com/permissionless/-/permissionless-0.1.34.tgz#537cda82158e4c18e3e4b10034cc361ef1ca36e1"
-  integrity sha512-jj0u54GRVp96Omlpb1X4A2Sr4LzhNzPUfNATOuqOdWNud8E/NoVjVddUv4nugsbfioJsGZx1xjxVw0ze9bU8Qw==
+permissionless@^0.1.39:
+  version "0.1.39"
+  resolved "https://registry.yarnpkg.com/permissionless/-/permissionless-0.1.39.tgz#b97b30ee747b5844f5354e27a32910abcd8dfdb5"
+  integrity sha512-xfJAgzyELvWFqQdm6SxmnjdL6lytUPem3aYhKqHa3jmWHDtE1liXmEVxRYTSjL51xfX0HiZ3ulXH5hIC9r4tEQ==
 
 picocolors@1.0.0:
   version "1.0.0"

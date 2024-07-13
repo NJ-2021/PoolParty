@@ -85,6 +85,8 @@ export function usePool(poolId?: string) {
                 transactions: txes
             }
             );
+            // return safeAccount?.sendTransaction(txes[0]);
+
         }
     }
 
