@@ -84,7 +84,7 @@ export function usePool(poolId?: string) {
             const txes = [
                 prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), router),
                 prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), router),
-                prepareAddLiq(pool?.assets[0].token as Address, pool?.assets[1].token as Address, lower, upper, parseUnits(amount.toString(), 18))
+                prepareAddLiq(pool?.assets[0].token as Address, pool?.assets[1].token as Address, lower, upper, parseUnits(amount.toString(), 18), router as Address)
             ];
 
             console.log("approving allowances", txes);
