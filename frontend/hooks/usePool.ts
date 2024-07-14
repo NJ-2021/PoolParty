@@ -2,9 +2,9 @@ import { readContracts } from "wagmi/actions";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { useSafe } from "./useSafe";
 import useSWR from "swr";
-import { Address, erc20Abi, formatEther, parseEther } from "viem";
+import { Address, erc20Abi, formatEther, parseEther, parseUnits } from "viem";
 import { POOL_MODIFY_LIQUIDITY_ABI } from "~~/lib/ABI";
-import { prepareAddLiquidity, prepareApproveERC20Tx } from "~~/lib/evm/actions";
+import { prepareAddLiq, prepareAddLiquidity, prepareApproveERC20Tx } from "~~/lib/evm/actions";
 import { SEPOLIA_POOL_ROUTER_CONTRACT } from "~~/lib/pool";
 
 export const pools = [
@@ -73,15 +73,17 @@ export function usePool(poolId?: string) {
         }
     });
 
-    const provideLiquidty = async () => {
+    const provideLiquidty = async (lower: number, upper: number, amount: number) => {
 
         if (balances && balances.balance0 !== 0 && balances.balance1 !== 0) {
             const txes = [
                 prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
                 prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
-                prepareAddLiquidity()
+                prepareAddLiq(pool?.assets[0].token as Address, pool?.assets[1].token as Address, lower, upper, parseUnits(amount.toString(), 18))
             ];
+
             console.log("approving allowances", txes);
+            console.log("old provide liquidity tx", prepareAddLiquidity());
 
             const result = await safeAccount?.sendTransactions({
                 transactions: txes

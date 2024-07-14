@@ -7,13 +7,14 @@ import { Safe } from "~~/components/safe";
 import { use7579Module } from "~~/hooks/use7579Module";
 import { usePool } from "~~/hooks/usePool";
 import { notification } from "~~/utils/scaffold-eth";
-import { getBlockScoutTxUrl } from "~~/lib/blockscout";
-import { encodePacked } from "viem";
 import { TxToast } from "~~/components/TxToast";
 
 const PoolPage: NextPage = () => {
     const { poolId } = useParams();
     const [loading, setLoading] = useState(false);
+    const [lowerTick, setLowerTick] = useState(17300);
+    const [upperTick, setUpperTick] = useState(17800);
+    const [amount, setAmount] = useState(100);
 
     const router = useRouter();
 
@@ -28,7 +29,7 @@ const PoolPage: NextPage = () => {
     const handleProvideLiquidty = async () => {
         setLoading(true);
         try {
-            const hash = await provideLiquidty();
+            const hash = await provideLiquidty(lowerTick, upperTick, amount);
             if (hash) {
                 notification.success(<TxToast message="Provide liquidity successful!" txhash={hash} />);
             }
@@ -78,6 +79,39 @@ const PoolPage: NextPage = () => {
                 </div>
 
                 <div className="flex justify-center">{name}</div>
+
+                <div className="flex flex-col justify-center mb-4 px-4">
+                    <div className="flex gap-2 text-sm">
+                        <div className="flex flex-col flex-1">
+                            <label htmlFor="" className="text-gray-400">LowerTick</label>
+                            <input
+                                type="number"
+                                className="p-2 rounded"
+                                value={lowerTick}
+                                onChange={(e) => setLowerTick(parseInt(e.target.value))}
+                            />
+                        </div>
+                        <div className="flex flex-col flex-1">
+                            <label htmlFor="" className="text-gray-400">UpperTick</label>
+                            <input
+                                type="number"
+                                className="p-2 rounded"
+                                value={upperTick}
+                                onChange={(e) => setUpperTick(parseInt(e.target.value))}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label htmlFor="" className="text-gray-400">Amount</label>
+                        <input
+                            type="number"
+                            className="p-2 rounded"
+                            value={amount}
+                            onChange={(e) => setAmount(parseInt(e.target.value))}
+                        />
+                    </div>
+                </div>
 
                 <div className="flex justify-center">
                     <button

@@ -9,6 +9,7 @@ import { notification } from "~~/utils/scaffold-eth";
 import { Balances } from "../Balances";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { useRouter } from "next/navigation";
+import { TxToast } from "../TxToast";
 
 
 
@@ -21,36 +22,6 @@ export const Safe = () => {
     const router = useRouter();
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [transactions, setTransactions] = useState<string[]>([]);
-    const [transactionDetails, setTransactionDetails] = useState<TransactionDetails[]>([]);
-
-    const sendTokens = async () => {
-        if (!safeAccount) {
-            notification.error("Safe account not found")
-            return;
-        }
-
-        setLoading(true)
-
-
-        const txHash = await transferERC20(
-            safeAccount,
-            sepoliaUSDCAddress,
-            BigInt(0.1 * 10 ** 6),
-            "0x865f1EB534a48DDBC8457C63eAd1E898C7DfD70E",
-        );
-
-        notification.success(<div>
-            Transfer initiated successfully:<a href={getBlockScoutTxUrl(txHash)}>txHash</a>
-        </div>);
-        console.log("txHash", txHash);
-        const transactionDetail = await getTransactionOnSepoliaByHash(txHash);
-        setTransactionDetails([...transactionDetails, transactionDetail]);
-
-        setLoading(false)
-        return txHash
-    }
 
     const handleMintTokens = async () => {
         if (!safeAccount) {
@@ -61,6 +32,7 @@ export const Safe = () => {
         setLoading(true)
         try {
             const result = await mintTokens();
+            notification.success(<TxToast message="Tokens minted!" txhash={result} />);
             console.log("mint result", result);
         } catch (e) {
             console.error("mint error", e);
