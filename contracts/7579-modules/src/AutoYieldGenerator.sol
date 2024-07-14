@@ -16,21 +16,24 @@ contract AutoYieldGenerator is ERC7579ExecutorBase {
     /*//////////////////////////////////////////////////////////////////////////
                                     CONSTANTS
     //////////////////////////////////////////////////////////////////////////*/
+    mapping(address smartAccount => uint256 jobCount) internal _accountJobCount;
 
     /*//////////////////////////////////////////////////////////////////////////
-                                     CONFIG
+                                    CONFIG
     //////////////////////////////////////////////////////////////////////////*/
 
     /* Initialize the module with the given data
      * @param data The data to initialize the module with
      */
-    function onInstall(bytes calldata data) external override {}
+    function onInstall(bytes calldata data) external override {
+        _accountJobCount[msg.sender]++;
+    }
 
     /* De-initialize the module with the given data
      * @param data The data to de-initialize the module with
      */
     function onUninstall(bytes calldata data) external override {
-        // _removeModuleData(data);
+        _accountJobCount[msg.sender] = 0;
     }
 
     /*
@@ -39,7 +42,7 @@ contract AutoYieldGenerator is ERC7579ExecutorBase {
      * @return true if the module is initialized, false otherwise
      */
     function isInitialized(address smartAccount) external view returns (bool) {
-        // return _isModuleInitialized(smartAccount);
+        return _accountJobCount[smartAccount] > 0;
     }
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -65,24 +68,24 @@ contract AutoYieldGenerator is ERC7579ExecutorBase {
                 ExecutionLib.encodeBatch(redeemExecution)
             );
 
-        // // decode
-        // uint256 maxShares = abi.decode(returnData[0], (uint256));
+        // decode
+        uint256 maxShares = abi.decode(returnData[0], (uint256));
 
-        // // deposit the redeemed assets back
-        // Execution[] memory depositExecution = new Execution[](1);
-        // depositExecution[0] = Execution({
-        //     target: REWARDCONTROLLER_ADDRESS,
-        //     value: 0,
-        //     callData: abi.encodeCall(
-        //         IRewardsController.deposit,
-        //         (maxShares, msg.sender)
-        //     )
-        // });
+        // deposit the redeemed assets back
+        Execution[] memory depositExecution = new Execution[](1);
+        depositExecution[0] = Execution({
+            target: REWARDCONTROLLER_ADDRESS,
+            value: 0,
+            callData: abi.encodeCall(
+                IRewardsController.deposit,
+                (maxShares, msg.sender)
+            )
+        });
 
-        // IERC7579Account(msg.sender).executeFromExecutor(
-        //     ModeLib.encodeSimpleBatch(),
-        //     ExecutionLib.encodeBatch(depositExecution)
-        // );
+        IERC7579Account(msg.sender).executeFromExecutor(
+            ModeLib.encodeSimpleBatch(),
+            ExecutionLib.encodeBatch(depositExecution)
+        );
     }
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -94,7 +97,7 @@ contract AutoYieldGenerator is ERC7579ExecutorBase {
      * @return name The name of the module
      */
     function name() external pure returns (string memory) {
-        return "ModuleExample";
+        return "AutoYieldGenerator";
     }
 
     /**

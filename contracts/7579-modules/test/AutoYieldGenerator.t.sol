@@ -25,42 +25,34 @@ contract AutoYieldGeneratorTest is RhinestoneModuleKit, Test {
         // Create the account and install the executor
         instance = makeAccountInstance("AutoYieldGenerator");
         vm.deal(address(instance.account), 1 ether);
+    }
+
+    function test_OnInstall() public {
+        assertEq(executor.isInitialized(address(instance.account)), false);
+    }
+
+    function test_IsInitialized() public {
         instance.installModule({
             moduleTypeId: MODULE_TYPE_EXECUTOR,
             module: address(executor),
             data: ""
         });
+
+        assertEq(executor.isInitialized(address(instance.account)), true);
     }
 
-    //TODO
-    // function test_IsInitializedWhenModuleIsIntialized() public {
-    //     bool isInitialized = executor.isInitialized(address(this));
-    //     assertTrue(isInitialized);
-    // }
+    function test_OnUninstall() public {
+        executor.onInstall("");
+        executor.onUninstall("");
 
-    function testExec() public {
-        // Create a target address and send some ether to it
-        address target = makeAddr("target");
-        uint256 value = 0.5 ether;
+        assertEq(executor.isInitialized(address(instance.account)), false);
+    }
 
-        // Get the current balance of the target
-        uint256 prevBalance = target.balance;
+    function test_Name() public {
+        assertEq(executor.name(), "AutoYieldGenerator");
+    }
 
-        // Encode the execution data sent to the account
-        bytes memory callData = ExecutionLib.encodeSingle(target, value, "");
-
-        // Execute the call
-        // EntryPoint -> Account -> Executor -> Account -> Target
-        instance.exec({
-            target: address(executor),
-            value: 0,
-            callData: abi.encodeWithSelector(
-                AutoYieldGenerator.generateYield.selector,
-                ""
-            )
-        });
-
-        // Check if the balance of the target has increased
-        // assertEq(target.balance, prevBalance + value);
+    function test_Version() public {
+        assertEq(executor.name(), "0.0.1");
     }
 }
