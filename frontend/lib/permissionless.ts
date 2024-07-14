@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ERC20_ABI } from "./ABI";
 import { ENTRYPOINT_ADDRESS_V07, SmartAccountClient, createSmartAccountClient, walletClientToSmartAccountSigner } from "permissionless";
 import { SafeSmartAccount, signerToSafeSmartAccount } from "permissionless/accounts";
 import { createPimlicoBundlerClient, createPimlicoPaymasterClient } from "permissionless/clients/pimlico";
-import { Address, Chain, Hex, Transport, WalletClient, createPublicClient, encodeFunctionData, erc20Abi, http } from "viem";
+import { Chain, Transport, WalletClient, createPublicClient, http } from "viem";
 import { erc7579Actions, Erc7579Actions } from 'permissionless/actions/erc7579'
 import { EntryPoint } from "permissionless/types/entrypoint";
 

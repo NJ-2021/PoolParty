@@ -1,8 +1,6 @@
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { createWalletClientFromWallet } from "@dynamic-labs/viem-utils";
-import { SafeSmartAccount } from "permissionless/accounts";
-import { useEffect, useMemo, useState } from "react";
-import { HttpTransport, WalletClient } from "viem";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { getPimlicoSmartAccountClient, getSafeAccount, SafeSmartAccountClient } from "~~/lib/permissionless";
 import { notification } from "~~/utils/scaffold-eth/notification";
