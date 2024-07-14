@@ -7,15 +7,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
-
-import { ProgressBar } from "~~/components/ProgressBar";
 import { customEvmNetworks } from "~~/lib/networks";
 import scaffoldConfig from "~~/scaffold.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
-  // useInitializeNativeCurrencyPrice();
-
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -69,7 +65,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <DynamicWagmiConnector>
-            <ProgressBar />
+
             <ScaffoldEthApp>{children}</ScaffoldEthApp>
           </DynamicWagmiConnector>
         </QueryClientProvider>

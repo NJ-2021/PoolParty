@@ -41,7 +41,7 @@ export const getSafeAccount = async (chain: Chain, walletClient: WalletClient) =
     entryPoint: ENTRYPOINT_ADDRESS_V07,
     signer,
     safeVersion: '1.4.1',
-    saltNonce: 120n,
+    saltNonce: 121n,
     safe4337ModuleAddress,
     erc7579LaunchpadAddress
   });

@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import { pools, Pool } from "~~/hooks/usePool";
-import { getBlockScoutAccountUrl } from "~~/lib/blockscout";
 
 function PoolItem({ name, assets, platform, poolId }: Pool) {
     const router = useRouter();

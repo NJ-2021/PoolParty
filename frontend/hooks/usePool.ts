@@ -19,7 +19,7 @@ export const pools = [
         platform: "UNISWAP",
         fallbackPlatform: "AAVE",
         availableModules: [
-            { name: "Auto-compounder", module: "0x8fD71070375863bf97E8F67093741902bB6121F3" }
+            { name: "Auto-compounder", module: "0x95067d0d5ffcED37759a4E5C84863CC19FD70F14" }
         ]
     },
     {
