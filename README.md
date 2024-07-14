@@ -96,7 +96,7 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 
 <div align="center"> 
 <img width="858" alt="<img width="858" alt="image" src="https://github.com/user-attachments/assets/7f1e9bb0-206c-4b20-a25e-23a380db4e0b">
-">
+
 
 
 
