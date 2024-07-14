@@ -95,7 +95,8 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 ## :camera: Screenshots: 
 
 <div align="center"> 
-<img width="858" alt="image" src="https://github.com/akirawuc/chirpy/assets/88503953/241aa5ce-5903-4ece-a238-c464abd441dc">
+<img width="858" alt="image" src="<img width="858" alt="image" src="https://github.com/user-attachments/assets/1e6a5a4b-efe9-4c10-a7a7-0df89b7163c6">
+">
 
 
 
