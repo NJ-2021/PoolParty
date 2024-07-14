@@ -42,7 +42,7 @@
 
   <!-- About the Project -->
 ## :star2: About the Project
-Discover Pool Part, your gateway to manage the inactive tokens in the liquidity pools!
+Discover Pool Party, your gateway to manage the inactive tokens in the liquidity pools!
 
 <!-- The Challenge -->
 
