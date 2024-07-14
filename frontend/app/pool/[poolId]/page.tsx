@@ -23,10 +23,7 @@ const PoolPage: NextPage = () => {
 
     const firstModule = availableModules?.[0];
 
-    // hardcoding module payload for now
-    const modulePayload = "0x0000000151800001000065f81e9400000000000000000000000094a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000044a9059cbb000000000000000000000000865f1eb534a48ddbc8457c63ead1e898c7dfd70e00000000000000000000000000000000000000000000000000000000000f424000000000000000000000000000000000000000000000000000000000";
-
-    const { isLoading: isModuleLoading, isModuleInstalled, installModule } = use7579Module(firstModule?.module, modulePayload);
+    const { isLoading: isModuleLoading, isModuleInstalled, installModule } = use7579Module(firstModule?.module);
 
     const handleProvideLiquidty = async () => {
         setLoading(true);
@@ -48,7 +45,7 @@ const PoolPage: NextPage = () => {
         try {
             const hash = await installModule();
             if (hash) {
-                notification.success(<TxToast message="Module enabled!" txhash={hash} />);
+                notification.success(<TxToast message="Module enabled!" opHash={hash} />);
             }
         } catch (error) {
             console.log("error", error);
