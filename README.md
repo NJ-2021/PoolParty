@@ -116,13 +116,6 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
     - Programming language: Typescript and Solidity
     - Web frameworks: Next.js
     
-    
-
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://docs.python-telegram-bot.org/en/v20.6/index.html">python3-telegram-bot</a></li>
 
 
     
