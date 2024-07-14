@@ -50,7 +50,7 @@ contract AutoYieldGenerator is ERC7579ExecutorBase {
     //////////////////////////////////////////////////////////////////////////*/
 
     /*
-     * Generate compounding on rewards
+     * Generate compound rewards
      * @param data The data to execute compounding
      */
     function generateYield() external {
