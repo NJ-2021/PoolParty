@@ -111,14 +111,12 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 
 <details>
   <summary>Client</summary>
-  <ul>
+ 
     - Blockchain: Ethereum
     - Programming language: Typescript and Solidity
     - Web frameworks: Next.js
     
     
-  </ul>
-</details>
 
 
 <details>
