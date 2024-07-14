@@ -112,10 +112,9 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://github.com/lens-protocol/lens-sdk">lens-sdk</a></li>
-    <li><a href="https://tailwindcss.com/">tailwind</a></li>
-    <li><a href="https://worldcoin.org/world-id">world-id</a></li>
-    <li><a href="https://next.id/">next.id</a></li>
+    - Blockchain: Ethereum
+    - Programming language: Typescript and Solidity
+    - Web frameworks: Next.js
     
     
     
