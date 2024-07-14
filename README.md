@@ -86,7 +86,7 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
 
 ## 👩‍💻 Innovation/Technical Complexity:
 
-**Chirpy** innovates crypto community management with advanced natural language processing, summarization, and replies. Building on Telegram, it introduces novel concepts, demonstrating technical sophistication in handling information overload.
+**Pool Party** Uniswap v4 yield optimiser that allocates out of positions assets into lending pools. An account abstraction layer allows 1-click liquidity management and automated yield harvesting..
 
 
 
