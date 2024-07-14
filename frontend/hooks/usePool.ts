@@ -15,6 +15,7 @@ export const pools = [
             { token: "0x2a238CbF7A05B45Fb101d9Fde6A1025719Da50fF", symbol: "mUNI" },
             { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }
         ],
+        apy: "Earn 4% - 23%",
         platform: "UNISWAP",
         fallbackPlatform: "AAVE",
         availableModules: [
@@ -23,7 +24,7 @@ export const pools = [
     },
     {
         name: "WBNB/USDC 0.1%",
-        poolId: "",
+        poolId: "0x019328934",
         assets: [
             { token: "", symbol: "WBNB" },
             { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }

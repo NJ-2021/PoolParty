@@ -12,7 +12,7 @@ function PoolItem({ name, assets, platform, poolId }: Pool) {
     }>
         <h1>{platform} - {name}</h1>
         <div className="flex gap-1 text-xs">
-            {assets.map(a => <a key={a.token} target="_blank" href={getBlockScoutAccountUrl(a.token)}>{a.symbol}</a>)}
+            {assets.map(a => <div key={a.token}>{a.symbol}</div>)}
         </div>
     </div>
 }
