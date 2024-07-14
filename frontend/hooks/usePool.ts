@@ -3,9 +3,7 @@ import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { useSafe } from "./useSafe";
 import useSWR from "swr";
 import { Address, erc20Abi, formatEther, parseEther, parseUnits } from "viem";
-import { POOL_MODIFY_LIQUIDITY_ABI } from "~~/lib/ABI";
 import { prepareAddLiq, prepareAddLiquidity, prepareApproveERC20Tx } from "~~/lib/evm/actions";
-import { SEPOLIA_POOL_ROUTER_CONTRACT } from "~~/lib/pool";
 
 export const pools = [
     {
@@ -18,6 +16,7 @@ export const pools = [
         apy: "Earn 4% - 23%",
         platform: "UNISWAP",
         fallbackPlatform: "AAVE",
+        routerContract: "0xFB3e0C6F74eB1a21CC1Da29aeC80D2Dfe6C9a317",
         availableModules: [
             { name: "Auto-compounder", module: "0x95067d0d5ffcED37759a4E5C84863CC19FD70F14" }
         ]
@@ -27,9 +26,10 @@ export const pools = [
         poolId: "0x019328934",
         apy: "Earn 5% - 18%",
         assets: [
-            { token: "", symbol: "WBNB" },
+            { token: "0x2a238CbF7A05B45Fb101d9Fde6A1025719Da50fF", symbol: "mUNI" },
             { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }
         ],
+        routerContract: "0x97e09cD0E079CeeECBb799834959e3dC8e4ec31A",
         platform: "PANCAKE",
         fallbackPlatform: "AAVE"
     }
@@ -78,9 +78,12 @@ export function usePool(poolId?: string) {
     const provideLiquidty = async (lower: number, upper: number, amount: number) => {
 
         if (balances && balances.balance0 !== 0 && balances.balance1 !== 0) {
+            const router = pool?.routerContract;
+            if (!router) throw Error("Missing router");
+
             const txes = [
-                prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
-                prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), SEPOLIA_POOL_ROUTER_CONTRACT),
+                prepareApproveERC20Tx(pool?.assets[0].token as Address, parseEther(balances.balance0.toString()), router),
+                prepareApproveERC20Tx(pool?.assets[1].token as Address, parseEther(balances.balance1.toString()), router),
                 prepareAddLiq(pool?.assets[0].token as Address, pool?.assets[1].token as Address, lower, upper, parseUnits(amount.toString(), 18))
             ];
 

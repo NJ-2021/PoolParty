@@ -60,10 +60,10 @@ export const prepareMintERC20 = (tokenAddress: string): { to: Address; value: bi
     };
 };
 
-export const prepareAddLiq = (tokenA: string, tokenB: string, tickLower: number, tickUpper: number, amount: bigint) => {
+export const prepareAddLiq = (tokenA: string, tokenB: string, tickLower: number, tickUpper: number, amount: bigint, router: Address) => {
     console.log("prepareAddLiq", tokenA, tokenB, tickLower, tickUpper, amount);
     return {
-        to: SEPOLIA_POOL_ROUTER_CONTRACT as Address,
+        to: router,
         data: encodeFunctionData({
             abi: POOL_MODIFY_LIQUIDITY_ABI,
             functionName: "modifyLiquidity",
