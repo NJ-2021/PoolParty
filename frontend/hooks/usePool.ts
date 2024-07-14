@@ -25,6 +25,7 @@ export const pools = [
     {
         name: "WBNB/USDC 0.1%",
         poolId: "0x019328934",
+        apy: "Earn 5% - 18%",
         assets: [
             { token: "", symbol: "WBNB" },
             { token: "0x2AFc1b35CA3102111099f02851CA1C20eA208dDc", symbol: "mUSDC" }

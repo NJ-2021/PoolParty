@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { pools, Pool } from "~~/hooks/usePool";
 
-function PoolItem({ name, assets, platform, poolId }: Pool) {
+function PoolItem({ name, assets, platform, poolId, apy }: Pool) {
     const router = useRouter();
 
     return <div className="flex flex-col flex-grow justify-center items-center bg-green-800 hover:bg-green-600 p-2 rounded-lg" onClick={
@@ -11,7 +11,7 @@ function PoolItem({ name, assets, platform, poolId }: Pool) {
     }>
         <h1>{platform} - {name}</h1>
         <div className="flex gap-1 text-xs">
-            {assets.map(a => <div key={a.token}>{a.symbol}</div>)}
+            {apy}
         </div>
     </div>
 }

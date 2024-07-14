@@ -34,12 +34,13 @@ export function useTransactions() {
 
     const { safeAddress, } = useSafe();
 
-    const { data: transactions, mutate } = useSWR(safeAddress && "transactions", async () => {
+    const { data: transactions, mutate, isLoading, isValidating } = useSWR(safeAddress && "transactions", async () => {
         return getTokenTransfersOnEthSepolia(safeAddress!);
     });
 
     return {
         transactions,
+        isLoading,
         mutate
     }
 }

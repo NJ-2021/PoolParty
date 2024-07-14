@@ -38,7 +38,7 @@ export const Safe = () => {
             console.log("mint result", result);
         } catch (e) {
             console.error("mint error", e);
-            notification.error("Mint error")
+            notification.error("Error: " + e);
 
         } finally {
             setLoading(false)
