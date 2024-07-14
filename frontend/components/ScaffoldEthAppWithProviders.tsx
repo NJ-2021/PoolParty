@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
 
-import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
+import { ProgressBar } from "~~/components/ProgressBar";
 import { customEvmNetworks } from "~~/lib/networks";
 import scaffoldConfig from "~~/scaffold.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
