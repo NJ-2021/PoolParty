@@ -1,3 +1,6 @@
 [submodule "uniswapV4Hook"]
 	path = uniswapV4Hook
 	url = git@github.com:asanson1404/uniswapV4Hooks.git
+[submodule "pancake-v4-hooks-template"]
+	path = pancake-v4-hooks-template
+	url = git@github.com:asanson1404/pancake-v4-hooks-template.git
