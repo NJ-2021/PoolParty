@@ -117,9 +117,9 @@ Efficinet use of inactive tokens in the pool and manage the funds in the wallet 
     - Web frameworks: Next.js
     
     
-    
   </ul>
 </details>
+
 
 <details>
   <summary>Server</summary>
